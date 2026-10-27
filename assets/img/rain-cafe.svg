@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" role="img" aria-label="雨天咖啡馆窗边的一杯热咖啡">
+  <defs>
+    <linearGradient id="rainBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#443b3b"/>
+      <stop offset=".55" stop-color="#6b554d"/>
+      <stop offset="1" stop-color="#2e2929"/>
+    </linearGradient>
+    <linearGradient id="window" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7f8a87"/>
+      <stop offset=".42" stop-color="#9d9587"/>
+      <stop offset="1" stop-color="#5b5b58"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9a6c50"/>
+      <stop offset="1" stop-color="#5d4034"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#ffda95" stop-opacity=".9"/>
+      <stop offset=".5" stop-color="#eba75f" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#b9743f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="rainBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="rainBlur2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="rainGrain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="m"/>
+      <feComponentTransfer in="m" result="g"><feFuncA type="linear" slope=".16"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="g" mode="soft-light"/>
+    </filter>
+  </defs>
+  <rect width="900" height="1200" fill="url(#rainBg)"/>
+  <rect x="92" y="112" width="716" height="760" rx="8" fill="#2a2929"/>
+  <rect x="112" y="132" width="676" height="720" fill="url(#window)"/>
+  <g opacity=".8">
+    <circle cx="227" cy="448" r="74" fill="#d9a56d" filter="url(#rainBlur)"/>
+    <circle cx="324" cy="392" r="35" fill="#e7c084" filter="url(#rainBlur)"/>
+    <circle cx="614" cy="505" r="66" fill="#c37f58" filter="url(#rainBlur)"/>
+    <circle cx="709" cy="410" r="26" fill="#f2cc95" filter="url(#rainBlur)"/>
+    <circle cx="160" cy="595" r="45" fill="#8d9b8f" filter="url(#rainBlur)"/>
+    <path d="M140 700c140-65 268-58 384 8 100 57 194 42 277-20v164H140Z" fill="#4d5a55" opacity=".7" filter="url(#rainBlur)"/>
+  </g>
+  <g stroke="#e7dfce" stroke-linecap="round" opacity=".4">
+    <path d="M184 172l-19 89M264 206l-22 73M342 148l-13 64M460 226l-31 132M603 162l-20 107M700 196l-28 145M753 132l-18 92" stroke-width="2"/>
+    <path d="M220 319l-18 83M404 337l-26 121M534 293l-23 109M660 360l-31 148M294 395l-22 100" stroke-width="1.5" opacity=".65"/>
+  </g>
+  <g fill="#eae2d2" opacity=".5">
+    <circle cx="197" cy="281" r="4"/><circle cx="281" cy="295" r="3"/><circle cx="459" cy="381" r="5"/><circle cx="612" cy="276" r="3"/><circle cx="696" cy="342" r="4"/><circle cx="730" cy="518" r="3"/>
+  </g>
+  <path d="M92 872h716v28H92Z" fill="#332b29"/>
+  <g opacity=".72" filter="url(#rainBlur2)">
+    <path d="M112 132h676v52H112Z" fill="#b8a891"/>
+  </g>
+  <path d="M0 892h900v308H0Z" fill="url(#table)"/>
+  <path d="M0 892c194 18 375 4 542-12 119-12 238-4 358 18v72c-143-19-278-14-405 7-160 27-318 24-495 6Z" fill="#b3815c" opacity=".25"/>
+  <ellipse cx="450" cy="933" rx="354" ry="35" fill="#3b2921" opacity=".3"/>
+  <g>
+    <ellipse cx="444" cy="963" rx="126" ry="27" fill="#2b1e1a" opacity=".3"/>
+    <path d="M342 874h204l-20 96c-3 15-14 23-31 23h-105c-18 0-29-9-31-25Z" fill="#f1e6d3"/>
+    <path d="M353 878h182l-16 78c-2 10-10 16-21 16H390c-11 0-18-6-20-15Z" fill="#f8f0e1"/>
+    <path d="M549 892c31-4 50 9 52 33 2 22-15 39-45 42" fill="none" stroke="#efe4d1" stroke-width="17" stroke-linecap="round"/>
+    <ellipse cx="447" cy="884" rx="100" ry="17" fill="#4d3428"/>
+    <ellipse cx="447" cy="883" rx="91" ry="13" fill="#2b1c15"/>
+    <g fill="none" stroke="#f8ead6" stroke-linecap="round" opacity=".38">
+      <path d="M400 820c-18-25 17-36 1-62" stroke-width="7" filter="url(#rainBlur2)"/>
+      <path d="M465 825c19-27-13-42 4-70" stroke-width="5" filter="url(#rainBlur2)"/>
+      <path d="M430 840c-11-20 19-31 4-55" stroke-width="4" filter="url(#rainBlur2)"/>
+    </g>
+  </g>
+  <g transform="translate(630 930) rotate(9)">
+    <rect width="176" height="124" rx="4" fill="#6d4a3b"/>
+    <rect x="8" y="8" width="160" height="108" rx="2" fill="#d7bfa0"/>
+    <path d="M30 37h116M30 53h89M30 69h105M30 85h63" stroke="#6f5648" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+    <path d="M8 8h9v108H8Z" fill="#b89773" opacity=".5"/>
+  </g>
+  <g fill="#caa06c" opacity=".4" filter="url(#rainBlur2)">
+    <circle cx="186" cy="1032" r="4"/><circle cx="218" cy="1004" r="2.5"/><circle cx="746" cy="1080" r="3.5"/><circle cx="790" cy="1038" r="2"/>
+  </g>
+  <ellipse cx="470" cy="410" rx="440" ry="380" fill="url(#lamp)" opacity=".08"/>
+  <rect width="900" height="1200" filter="url(#rainGrain)" fill="transparent"/>
+</svg>

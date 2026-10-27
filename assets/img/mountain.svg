@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" role="img" aria-label="晨雾山野中的帐篷与远山">
+  <defs>
+    <linearGradient id="mtSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8d7c8"/>
+      <stop offset=".48" stop-color="#c9c4ae"/>
+      <stop offset="1" stop-color="#8c9889"/>
+    </linearGradient>
+    <linearGradient id="mtFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a9b8f"/>
+      <stop offset="1" stop-color="#667a70"/>
+    </linearGradient>
+    <linearGradient id="mtMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#61776a"/>
+      <stop offset="1" stop-color="#42594f"/>
+    </linearGradient>
+    <linearGradient id="mtNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b5148"/>
+      <stop offset="1" stop-color="#263a33"/>
+    </linearGradient>
+    <radialGradient id="mtSun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff6d6" stop-opacity=".85"/>
+      <stop offset=".5" stop-color="#e9dcb2" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#dfd3ae" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="mtBlur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="mtGrain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="m"/>
+      <feComponentTransfer in="m" result="g"><feFuncA type="linear" slope=".15"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="g" mode="soft-light"/>
+    </filter>
+  </defs>
+  <rect width="900" height="1200" fill="url(#mtSky)"/>
+  <ellipse cx="630" cy="330" rx="290" ry="235" fill="url(#mtSun)" filter="url(#mtBlur)"/>
+  <circle cx="630" cy="330" r="61" fill="#f8edcd" opacity=".74"/>
+  <g opacity=".42" fill="#f2ecda">
+    <path d="M0 678c130-42 243-41 340 5 100 47 214 42 330-10 83-37 158-33 230-8v120c-93-16-173-9-246 15-124 41-241 43-345-3-107-47-211-48-309-5Z" filter="url(#mtBlur)"/>
+    <path d="M0 790c137-28 249-15 342 24 102 43 207 32 319-14 99-40 177-29 239-6v96c-81-9-154 4-219 28-116 43-235 45-352 2-104-38-211-34-329 1Z" filter="url(#mtBlur)"/>
+  </g>
+  <path d="M0 542l122-103 90 64 126-149 119 141 94-94 126 162 99-64 124 118v311H0Z" fill="url(#mtFar)" opacity=".7"/>
+  <path d="M0 670l151-110 91 74 147-189 128 170 102-81 138 148 143-78v340H0Z" fill="url(#mtMid)" opacity=".85"/>
+  <path d="M0 789l124-91 111 58 156-122 138 118 126-57 143 92 102-34v287H0Z" fill="url(#mtNear)"/>
+  <g fill="none" stroke="#dde2ce" stroke-width="2" stroke-linecap="round" opacity=".46">
+    <path d="M174 277c8-6 16-6 24 0 8-6 16-6 24 0"/>
+    <path d="M713 230c6-4 12-4 18 0 6-4 12-4 18 0"/>
+    <path d="M260 359c5-3 10-3 15 0 5-3 10-3 15 0"/>
+  </g>
+  <path d="M0 936c126-26 232-14 333 23 102 37 199 35 303-4 106-40 193-37 264-14v259H0Z" fill="#1f302b"/>
+  <g>
+    <path d="M390 916l89-83 92 83Z" fill="#d6b285"/>
+    <path d="M479 833l-42 38 42 133 45-135Z" fill="#b28b63"/>
+    <path d="M437 871l42 133-25-1-35-100Z" fill="#e0bd8e"/>
+    <path d="M479 1004v-75" stroke="#493b30" stroke-width="3"/>
+    <path d="M479 833v171" stroke="#70553e" stroke-width="2" opacity=".6"/>
+  </g>
+  <g fill="#17231f">
+    <circle cx="602" cy="948" r="12"/>
+    <path d="M591 962c5-4 16-4 22 0l5 38 10 59h-15l-13-48-13 48h-16l11-59Z"/>
+    <circle cx="638" cy="962" r="10"/>
+    <path d="M629 974c4-3 13-3 18 0l5 31 8 49h-13l-10-39-11 39h-13l9-48Z"/>
+  </g>
+  <g fill="#1a2823" opacity=".46">
+    <path d="M0 1132c56-46 108-67 157-62 43 4 69 27 98 39 41 17 85 8 127-7 67-24 133-10 188 31 37 28 76 46 118 58H0Z"/>
+  </g>
+  <g fill="none" stroke="#9eaf9d" stroke-width="2" stroke-linecap="round" opacity=".35">
+    <path d="M104 1098c18-82 35-136 51-161M116 1050c18-4 29-13 35-27M129 1004c-9-6-14-16-15-30M762 1120c-14-72-25-123-34-152M752 1067c14-3 23-10 28-21"/>
+  </g>
+  <rect width="900" height="1200" filter="url(#mtGrain)" fill="transparent"/>
+</svg>

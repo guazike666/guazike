@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1040" width="760" height="1040" role="img" aria-label="落日山野中并肩而立的两个身影">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8e4cd"/>
+      <stop offset=".32" stop-color="#efc5b4"/>
+      <stop offset=".62" stop-color="#d7958d"/>
+      <stop offset=".82" stop-color="#a45f67"/>
+      <stop offset="1" stop-color="#613c49"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff8e9" stop-opacity=".98"/>
+      <stop offset=".45" stop-color="#ffe9c5" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#f7d2b1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hillsFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9b6266"/>
+      <stop offset="1" stop-color="#744851"/>
+    </linearGradient>
+    <linearGradient id="hillsMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#68404a"/>
+      <stop offset="1" stop-color="#473139"/>
+    </linearGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d2a32"/>
+      <stop offset="1" stop-color="#251c22"/>
+    </linearGradient>
+    <linearGradient id="tape" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffaf0" stop-opacity=".55"/>
+      <stop offset=".5" stop-color="#f1ddc6" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#fffaf0" stop-opacity=".5"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="soft2" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.6"/>
+    </filter>
+    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+      <feComponentTransfer in="mono" result="grain">
+        <feFuncA type="linear" slope=".16"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="grain" mode="soft-light"/>
+    </filter>
+    <filter id="vignette" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <rect width="760" height="1040" fill="url(#sky)"/>
+  <ellipse cx="478" cy="365" rx="265" ry="245" fill="url(#sun)" filter="url(#soft)"/>
+  <circle cx="478" cy="365" r="86" fill="#ffeccb" opacity=".9"/>
+  <circle cx="478" cy="365" r="102" fill="none" stroke="#fff3d8" stroke-opacity=".2" stroke-width="1"/>
+
+  <g fill="none" stroke="#4d3038" stroke-width="1.6" stroke-linecap="round" opacity=".62">
+    <path d="M206 248c10-7 20-7 28 0 8-7 18-7 27 0"/>
+    <path d="M584 195c8-6 16-6 23 0 7-6 15-6 22 0"/>
+    <path d="M637 251c5-4 11-4 16 0 5-4 10-4 15 0"/>
+  </g>
+
+  <path d="M0 560c66-17 128-22 188-9 64 14 110 44 165 43 76-1 121-54 199-53 75 1 123 38 208 19v178H0Z" fill="#b97b7b" opacity=".48" filter="url(#soft2)"/>
+
+  <path d="M0 632c70-53 133-72 204-55 52 12 84 52 134 53 59 1 94-51 161-57 91-8 169 65 261 45v216H0Z" fill="url(#hillsFar)" opacity=".84"/>
+  <path d="M0 716c54-38 117-55 178-44 48 9 77 35 117 43 54 11 92-13 139-24 88-20 194 15 326 74v118H0Z" fill="#68434d" opacity=".68"/>
+
+  <g opacity=".34" filter="url(#soft2)">
+    <path d="M0 713c127 24 243 41 377 18 144-25 241 23 383 56v40H0Z" fill="#f0bdae"/>
+  </g>
+
+  <path d="M0 775c96-34 180-41 265-24 73 15 121 58 196 56 87-2 130-58 223-47 27 3 52 10 76 18v262H0Z" fill="url(#field)"/>
+  <path d="M0 864c114-24 218-18 320 8 114 29 224 23 440-23v191H0Z" fill="#1f171d" opacity=".58"/>
+
+  <g fill="#1f171d">
+    <path d="M377 725c-5 4-8 10-8 17 0 8 5 14 12 17l-4 31c-19 9-32 22-36 44l-13 86c-2 14 2 22 12 22 9 0 13-7 16-20l18-79 1 84c0 15 5 22 15 22 11 0 15-8 14-23l-3-96c2-32 0-57-5-77l-5-24c7-4 10-10 10-18 0-12-8-21-19-21-4 0-7 1-10 3Z"/>
+    <path d="M410 728c-3 3-4 7-4 12 0 6 2 10 6 13l-2 19c-9 6-14 15-15 27l-3 79c0 12 4 18 13 18 8 0 12-6 12-18l4-54 8 56c2 13 6 19 14 18 9-1 12-8 10-20l-12-86c-2-13-7-22-14-27l-1-14c5-4 7-8 7-14 0-9-6-16-14-16-4 0-7 1-9 3Z"/>
+    <path d="M387 724c-8 4-13 11-15 20l-2 36c0 8 3 13 8 14 4 1 7-2 9-8l5-28 4 29c1 6 4 9 8 8 5-1 7-6 6-14l-4-38c-1-11-6-18-13-20Z" opacity=".85"/>
+    <path d="M404 739c-6 7-10 17-11 29l-2 34c0 7 2 10 6 10 4 0 6-4 7-10l5-33 5 32c1 6 3 9 7 9 4 0 6-4 5-11l-3-34c-1-12-5-21-11-27Z" opacity=".78"/>
+  </g>
+  <g fill="#1f171d">
+    <path d="M374 661c-11 0-19 8-19 19 0 5 2 10 5 14-5 4-8 10-8 17 0 7 3 13 8 17l2 7c-2 3-3 7-3 11 0 9 6 16 15 17l34 1c10 0 17-7 17-17 0-8-5-14-12-16l-1-4c4-4 7-9 7-16 0-7-3-13-8-17 4-4 6-9 6-15 0-11-9-19-20-19-7 0-13 3-16 8-2-5-7-8-13-8-8 0-14 6-14 14 0 3 1 6 2 8Z" filter="url(#soft2)" opacity=".95"/>
+  </g>
+
+  <g fill="#1f171d">
+    <circle cx="397" cy="656" r="20"/>
+    <path d="M389 673h16l4 18c2 8 9 12 18 14 12 3 18 12 17 27l-4 58-10 86c-1 10-5 15-12 15-9 0-13-7-12-18l7-67-21-50-16 49 3 64c0 11-4 17-12 17-9 0-14-6-14-17l-2-77c0-15 3-26 10-34l16-18 4-22c3-3 6-6 8-10Z"/>
+    <path d="M390 648c-4-16 5-28 21-28 11 0 19 6 23 16 3 8-1 14-9 14h-6c-2 9-12 14-21 10-5-2-7-7-8-12Z"/>
+    <path d="M386 672c-14 4-23 12-27 25l-9 38c-2 8 0 13 6 14 5 1 8-2 11-8l12-31-3 37c0 7 3 10 8 10 4 0 7-3 7-9l3-42c1-16-1-27-8-34Z" opacity=".9"/>
+  </g>
+
+  <g fill="none" stroke="#d3a184" stroke-width="2" stroke-linecap="round" opacity=".52">
+    <path d="M84 864c20-25 32-50 37-76M96 826c13-4 21-12 26-24M106 801c-9-5-14-13-15-25M625 905c-14-28-21-52-20-74M616 870c-12-5-19-14-22-27M609 850c10-4 17-12 21-23"/>
+  </g>
+  <g fill="#d1a184" opacity=".5">
+    <circle cx="121" cy="788" r="3"/><circle cx="105" cy="797" r="2"/><circle cx="622" cy="849" r="2.5"/><circle cx="587" cy="873" r="2"/>
+  </g>
+
+  <g fill="#140f13" opacity=".86">
+    <path d="M0 1000c47-31 91-43 132-37 37 6 58 25 85 31 32 7 54-5 82-8 35-4 67 10 99 36 21 17 41 25 61 22H0Z"/>
+    <path d="M760 966c-42 2-80 16-112 42-18 14-36 20-53 18h165Z"/>
+  </g>
+
+  <rect width="760" height="1040" filter="url(#grain)" fill="transparent"/>
+  <rect width="760" height="1040" fill="url(#tape)" opacity=".06"/>
+</svg>

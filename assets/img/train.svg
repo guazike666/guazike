@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="从火车车窗望出去的春日田野">
+  <defs>
+    <linearGradient id="trSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dbe4df"/>
+      <stop offset=".55" stop-color="#e8e2c9"/>
+      <stop offset="1" stop-color="#cdd3ad"/>
+    </linearGradient>
+    <linearGradient id="trField" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fa276"/>
+      <stop offset="1" stop-color="#526b52"/>
+    </linearGradient>
+    <linearGradient id="trFrame" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6b5749"/>
+      <stop offset=".5" stop-color="#8d725d"/>
+      <stop offset="1" stop-color="#5c4a3f"/>
+    </linearGradient>
+    <linearGradient id="trCurtain" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c9b9a0"/>
+      <stop offset=".55" stop-color="#e6d9c2"/>
+      <stop offset="1" stop-color="#b6a48c"/>
+    </linearGradient>
+    <filter id="trBlur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="trBlur2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="trGrain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0" result="m"/>
+      <feComponentTransfer in="m" result="g"><feFuncA type="linear" slope=".14"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="g" mode="soft-light"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="#332b27"/>
+  <rect x="102" y="80" width="996" height="680" rx="22" fill="url(#trFrame)"/>
+  <rect x="135" y="112" width="930" height="616" rx="8" fill="url(#trSky)"/>
+  <g>
+    <circle cx="780" cy="263" r="57" fill="#fff7dd" opacity=".85"/>
+    <ellipse cx="780" cy="263" rx="170" ry="145" fill="#fff7dd" opacity=".13" filter="url(#trBlur)"/>
+    <g fill="#eef0dc" opacity=".55">
+      <path d="M164 226c55-37 115-36 170 1 41-18 84-12 116 15-92 22-200 19-286-16Z" filter="url(#trBlur2)"/>
+      <path d="M605 183c39-23 80-18 108 11 29-8 56 2 72 24-63 8-124 2-180-35Z" filter="url(#trBlur2)"/>
+    </g>
+    <path d="M135 492c146-48 266-41 364 15 93 53 206 45 326-12 79-38 160-35 240-13v246H135Z" fill="#a4b28d" opacity=".8"/>
+    <path d="M135 545c162-24 293-6 392 46 107 56 220 38 329-14 71-33 145-33 209-11v162H135Z" fill="url(#trField)"/>
+    <path d="M135 600c144-20 262 8 355 49 103 45 207 29 306-17 68-32 135-31 204-8v104H135Z" fill="#6e835f" opacity=".75"/>
+    <g fill="none" stroke="#455e43" stroke-width="3" stroke-linecap="round" opacity=".55">
+      <path d="M536 403v-93M540 364h-35l-23-17M542 338h28l19-15M540 386h-46M543 317v-41"/>
+      <path d="M882 391v-77M886 349h-31l-20-14M887 326h24l17-13"/>
+    </g>
+    <g fill="#ebdfb6" opacity=".65">
+      <circle cx="320" cy="555" r="2.4"/><circle cx="382" cy="539" r="1.7"/><circle cx="702" cy="562" r="2"/><circle cx="915" cy="529" r="2.2"/><circle cx="1004" cy="583" r="1.6"/>
+    </g>
+    <path d="M135 616c197-18 350 4 471 48 100 36 194 26 283-4 57-20 115-19 176-2" fill="none" stroke="#d6cba9" stroke-width="8" opacity=".45" filter="url(#trBlur2)"/>
+  </g>
+  <g opacity=".2" filter="url(#trBlur2)">
+    <path d="M240 150c118 66 196 152 233 258 25 72 70 127 136 165" fill="none" stroke="#fff" stroke-width="20"/>
+    <path d="M830 155c-79 82-116 172-110 270 4 63-12 116-49 160" fill="none" stroke="#fff" stroke-width="14"/>
+  </g>
+  <g>
+    <path d="M100 80h95c-31 91-43 204-36 339 4 90-2 204-18 341H100Z" fill="url(#trCurtain)"/>
+    <path d="M137 80c30 38 41 95 33 171-8 74 0 138 25 192 27 59 31 131 12 217H137c17-91 18-175 2-250-15-70-11-143 12-219 12-40 7-77-14-111Z" fill="#d1c1a9" opacity=".65"/>
+    <path d="M1005 80h95v680h-95c-14-108-17-212-8-312 8-101 4-224-13-368Z" fill="url(#trCurtain)" opacity=".9"/>
+  </g>
+  <path d="M102 760h996v55c-184-19-342-12-476 20-155 37-329 31-520-18Z" fill="#514136"/>
+  <path d="M0 820h1200v80H0Z" fill="#2c2622"/>
+  <g fill="#d7c8b0" opacity=".4">
+    <circle cx="1044" cy="563" r="4"/><circle cx="523" cy="735" r="2.5"/><circle cx="192" cy="402" r="2"/>
+  </g>
+  <rect width="1200" height="900" filter="url(#trGrain)" fill="transparent"/>
+</svg>
