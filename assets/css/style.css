@@ -877,6 +877,159 @@ ol {
   flex: 0 0 auto;
 }
 
+/* ---------- Install as app ---------- */
+
+.install-app {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border: 1px solid rgba(112, 127, 105, 0.24);
+  background: rgba(223, 228, 214, 0.3);
+}
+
+.install-app-copy {
+  min-width: 0;
+}
+
+.install-app-label {
+  color: var(--sage-deep);
+  font-family: var(--font-en);
+  font-size: 7px;
+  letter-spacing: 0.2em;
+}
+
+.install-app-copy strong {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.install-app-copy p {
+  margin-top: 3px;
+  color: var(--ink-faint);
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.install-app .mini-button {
+  flex: 0 0 auto;
+  color: var(--sage-deep);
+  border-color: rgba(77, 93, 76, 0.32);
+}
+
+.install-banner {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 180;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(440px, calc(100% - 28px));
+  padding: 11px 12px;
+  border: 1px solid rgba(44, 36, 37, 0.13);
+  border-radius: 18px;
+  background: rgba(252, 248, 239, 0.96);
+  box-shadow:
+    0 18px 45px rgba(53, 35, 31, 0.2),
+    0 1px 2px rgba(53, 35, 31, 0.05);
+  opacity: 0;
+  transform: translate(-50%, 18px);
+  transition:
+    opacity 0.45s var(--ease),
+    transform 0.45s var(--ease);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.install-banner.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.install-banner > img {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  box-shadow: 0 4px 12px rgba(44, 36, 37, 0.16);
+}
+
+.install-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.install-copy strong {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+}
+
+.install-copy span {
+  color: var(--ink-faint);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.install-action {
+  flex: 0 0 auto;
+  min-height: 34px;
+  padding: 0 13px;
+  border-radius: 999px;
+  color: var(--paper);
+  background: var(--ink);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+}
+
+.install-action:hover {
+  background: var(--rose-deep);
+  transform: translateY(-1px);
+}
+
+.install-close {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: var(--ink-faint);
+  font-family: var(--font-en);
+  font-size: 18px;
+  line-height: 1;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+}
+
+.install-close:hover {
+  color: var(--ink);
+  background: rgba(44, 36, 37, 0.06);
+}
+
+@media (min-width: 821px) {
+  .install-banner {
+    display: none !important;
+  }
+}
+
 /* ---------- Mobile nav ---------- */
 
 .mobile-nav {
@@ -4628,6 +4781,36 @@ ol {
 
   .cloud-session .mini-button {
     width: 100%;
+  }
+
+  .install-app {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .install-app .mini-button {
+    width: 100%;
+  }
+
+  .install-banner {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .install-banner > img {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+
+  .install-copy strong {
+    font-size: 12px;
+  }
+
+  .install-action {
+    min-height: 32px;
+    padding: 0 10px;
   }
 
   .site-header {

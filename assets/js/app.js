@@ -173,6 +173,12 @@
   let authReloadScheduled = false;
   let lastRemoteSyncAt = 0;
 
+  const INSTALL_BANNER_DISMISSED_KEY = "zhaomu.install.banner.dismissed.v1";
+  const INSTALL_COMPLETED_KEY = "zhaomu.install.completed.v1";
+  let deferredInstallPrompt = null;
+  let installBannerTimer = null;
+  let pwaSetupDone = false;
+
   /* ---------- Utilities ---------- */
 
   function escapeHTML(value) {
@@ -441,6 +447,184 @@
     window.setTimeout(() => {
       if (!gate.classList.contains("is-open")) gate.hidden = true;
     }, 520);
+  }
+
+  /* ---------- PWA / install ---------- */
+
+  function isPwaContext() {
+    return /^https?:$/.test(window.location.protocol);
+  }
+
+  function isStandaloneMode() {
+    return (
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.matchMedia("(display-mode: fullscreen)").matches ||
+      window.navigator.standalone === true
+    );
+  }
+
+  function isIOSDevice() {
+    return /iphone|ipad|ipod/i.test(window.navigator.userAgent) ||
+      (window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1);
+  }
+
+  function readLocalFlag(key) {
+    try {
+      return window.localStorage.getItem(key) === "1";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function writeLocalFlag(key) {
+    try {
+      window.localStorage.setItem(key, "1");
+    } catch (error) {
+      // Installation still works; just don't remember the choice.
+    }
+  }
+
+  function isInstalledApp() {
+    return isStandaloneMode() || readLocalFlag(INSTALL_COMPLETED_KEY);
+  }
+
+  function hideInstallBanner() {
+    const banner = $("#installBanner");
+    if (!banner) return;
+    window.clearTimeout(installBannerTimer);
+    banner.classList.remove("is-visible");
+    window.setTimeout(() => {
+      if (!banner.classList.contains("is-visible")) banner.hidden = true;
+    }, 460);
+  }
+
+  function showInstallBanner() {
+    if (!appStarted || !isPwaContext() || isInstalledApp()) return;
+    if (!window.matchMedia("(max-width: 820px)").matches) return;
+    if (readLocalFlag(INSTALL_BANNER_DISMISSED_KEY)) return;
+    if (!deferredInstallPrompt && !isIOSDevice()) return;
+
+    const banner = $("#installBanner");
+    const action = $("#installBannerBtn");
+    if (!banner || !action) return;
+
+    if (deferredInstallPrompt) {
+      setText("#installBannerDesc", "像 App 一样全屏打开，不用每次找网址");
+      action.textContent = "安装";
+    } else {
+      setText("#installBannerDesc", "Safari：点底部「分享」→「添加到主屏幕」");
+      action.textContent = "知道了";
+    }
+
+    banner.hidden = false;
+    window.requestAnimationFrame(() => banner.classList.add("is-visible"));
+  }
+
+  function maybeShowInstallBanner(delay = 2600) {
+    window.clearTimeout(installBannerTimer);
+    installBannerTimer = window.setTimeout(showInstallBanner, delay);
+  }
+
+  function dismissInstallBanner() {
+    writeLocalFlag(INSTALL_BANNER_DISMISSED_KEY);
+    hideInstallBanner();
+    updateInstallUI();
+  }
+
+  function updateInstallUI() {
+    const card = $("#installSettings");
+    if (!card) return;
+
+    const installed = isInstalledApp();
+    const available = isPwaContext() && !installed;
+    card.hidden = !available;
+    if (installed) hideInstallBanner();
+
+    if (!available) return;
+
+    const ios = isIOSDevice();
+    setText(
+      "#installSettingsDesc",
+      ios
+        ? "Safari：点底部「分享」→「添加到主屏幕」。"
+        : "像 App 一样全屏打开，不用每次找网址。"
+    );
+
+    const action = $("#installSettingsBtn");
+    if (action) action.textContent = deferredInstallPrompt ? "安装" : "查看方法";
+  }
+
+  async function triggerInstall() {
+    if (isInstalledApp()) {
+      showToast("已经添加到桌面了，可以从桌面直接打开");
+      return;
+    }
+
+    if (deferredInstallPrompt) {
+      const prompt = deferredInstallPrompt;
+      deferredInstallPrompt = null;
+
+      try {
+        await prompt.prompt();
+        const choice = await prompt.userChoice;
+        if (choice && choice.outcome === "accepted") {
+          writeLocalFlag(INSTALL_COMPLETED_KEY);
+          hideInstallBanner();
+          updateInstallUI();
+          showToast("已经添加到桌面，可以从桌面打开啦");
+        } else {
+          writeLocalFlag(INSTALL_BANNER_DISMISSED_KEY);
+          hideInstallBanner();
+          updateInstallUI();
+        }
+      } catch (error) {
+        showToast("安装入口没有打开，可以用浏览器菜单手动添加", "error");
+      }
+      return;
+    }
+
+    if (isIOSDevice()) {
+      showToast("Safari：点底部「分享」→「添加到主屏幕」");
+      hideInstallBanner();
+      return;
+    }
+
+    showToast("请用浏览器菜单里的「安装应用」或「添加到主屏幕」");
+  }
+
+  function registerServiceWorker() {
+    if (!("serviceWorker" in window.navigator) || !isPwaContext()) return;
+
+    window.navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch((error) => {
+      console.warn("[朝暮] service worker registration failed", error);
+    });
+  }
+
+  function setupPwa() {
+    if (pwaSetupDone) return;
+    pwaSetupDone = true;
+
+    registerServiceWorker();
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      updateInstallUI();
+      if (appStarted) maybeShowInstallBanner(500);
+    });
+
+    window.addEventListener("appinstalled", () => {
+      const alreadyKnown = readLocalFlag(INSTALL_COMPLETED_KEY);
+      writeLocalFlag(INSTALL_COMPLETED_KEY);
+      hideInstallBanner();
+      updateInstallUI();
+      if (!alreadyKnown) showToast("已经添加到桌面，可以从桌面打开啦");
+    });
+
+    const displayMode = window.matchMedia("(display-mode: standalone)");
+    if (typeof displayMode.addEventListener === "function") {
+      displayMode.addEventListener("change", updateInstallUI);
+    }
   }
 
   /* ---------- State ---------- */
@@ -2136,6 +2320,10 @@
       window.location.reload();
     });
 
+    $("#installBannerBtn")?.addEventListener("click", triggerInstall);
+    $("#installBannerClose")?.addEventListener("click", dismissInstallBanner);
+    $("#installSettingsBtn")?.addEventListener("click", triggerInstall);
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", updateHeaderAndNav, { passive: true });
 
@@ -2232,6 +2420,8 @@
     setupClock();
     updateHeaderAndNav();
     updateCloudUI();
+    updateInstallUI();
+    maybeShowInstallBanner();
 
     if (remoteActive) {
       setSyncStatus("synced", "已同步");
@@ -2421,6 +2611,7 @@
 
   async function init() {
     document.body.classList.add("motion-ready");
+    setupPwa();
 
     if (cloudAvailable) {
       cloud.onAuthLost(handleRemoteAuthLost);

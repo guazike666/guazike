@@ -1,0 +1,79 @@
+{
+  "id": "./",
+  "name": "朝暮 · 我们的小小宇宙",
+  "short_name": "朝暮",
+  "description": "记录相恋天数、回忆相册、深夜情书和心愿清单的两个人专属空间。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#f5eee3",
+  "theme_color": "#f5eee3",
+  "categories": ["lifestyle", "social"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "assets/img/pwa-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/pwa-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/pwa-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "preview/mobile-hero.webp",
+      "sizes": "390x1230",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "朝暮手机首页"
+    },
+    {
+      "src": "preview/desktop-hero.webp",
+      "sizes": "1440x1000",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "朝暮桌面首页"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "回忆相册",
+      "short_name": "相册",
+      "url": "./#album",
+      "icons": [
+        {
+          "src": "assets/img/pwa-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "深夜情书",
+      "short_name": "情书",
+      "url": "./#notes",
+      "icons": [
+        {
+          "src": "assets/img/pwa-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

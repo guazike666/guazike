@@ -147,14 +147,31 @@ supabaseAnonKey: "eyJhbGciOi..."
 1. 在 GitHub 新建一个仓库，例如 `zhaomu`。
    - 免费账号的 Pages 需要 **public** 仓库。
    - 代码和示例图会公开，但你们的真实数据在 Supabase 里，受登录和白名单保护。
-2. 进入仓库，点 **Add file → Upload files**。
+2. 进入仓库，先点 **Code** 标签页。
+   - 如果右上角有 **Add file**，点 **Add file → Upload files**。
+   - 如果看不到 **Add file**，直接在浏览器地址栏打开：
+
+```text
+https://github.com/你的用户名/你的仓库名/upload/main
+```
+
+例如用户名是 `xiaoming`，仓库名是 `zhaomu`：
+
+```text
+https://github.com/xiaoming/zhaomu/upload/main
+```
+
+   - 如果仓库还是空的，首页会显示 **Quick setup**，点其中的 **uploading an existing file** 也可以。
 3. 把本项目文件夹里的这些内容拖进去（保持在仓库根目录）：
    - `index.html`
+   - `manifest.json`
+   - `sw.js`
    - `assets/`
    - `supabase/`
+   - `robots.txt`
    - `README.md`
    - `打开网站.bat`（可选）
-   - `preview/`（可选）
+   - `preview/`（建议保留，PWA 安装界面会用到）
 4. 点 **Commit changes**。
 5. 进入仓库的 **Settings → Pages**。
 6. **Build and deployment → Source** 选 **Deploy from a branch**。
@@ -166,6 +183,9 @@ https://你的用户名.github.io/zhaomu/
 ```
 
 这个网址就是你们以后在任何设备上打开的地址。电脑关机也不影响。
+
+> 如果之前已经部署过旧版，更新时至少要重新上传：`index.html`、`manifest.json`、`sw.js`、`assets/`。  
+> 上传后等 Pages 重新发布；手机上如果还看到旧页面，完全关闭再从桌面打开一次，让 Service Worker 更新缓存。
 
 ---
 
